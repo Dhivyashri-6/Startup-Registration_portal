@@ -1,0 +1,27 @@
+<div class="admin-dashboard">
+  <div class="admin-header fade-in">
+    <h2>Admin Dashboard</h2>
+    <p>Manage startup applications</p>
+  </div>
+
+  <div class="admin-nav">
+    <a 
+      routerLink="/admin-dashboard/pending" 
+      class="admin-nav-link" 
+      routerLinkActive="active"
+    >
+      Pending Applications
+    </a>
+    <a 
+      routerLink="/admin-dashboard/rejected" 
+      class="admin-nav-link" 
+      routerLinkActive="active"
+    >
+      Rejected Startups
+    </a>
+  </div>
+
+  <div class="admin-content fade-in delay-1">
+    <router-outlet></router-outlet>
+  </div>
+</div>

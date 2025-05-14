@@ -1,0 +1,54 @@
+<div class="status-container">
+  <div class="status-header">
+    <h3>Your Startup Applications</h3>
+    <p>View the status of your submitted applications</p>
+  </div>
+
+  <div *ngIf="isLoading" class="loading-message">
+    Loading your applications...
+  </div>
+
+  <div *ngIf="!isLoading && startups.length === 0" class="empty-message">
+    You haven't submitted any startup applications yet.
+  </div>
+
+  <div *ngFor="let startup of startups" class="status-card" [class.pending]="startup.status === 'pending'"
+    [class.approved]="startup.status === 'approved'" [class.rejected]="startup.status === 'rejected'">
+    <div class="status-card-header">
+      <h4 class="status-card-title">{{ startup.name }}</h4>
+      <span class="status-badge" [class.badge-pending]="startup.status === 'pending'"
+        [class.badge-approved]="startup.status === 'approved'" [class.badge-rejected]="startup.status === 'rejected'">
+        {{ startup.status | titlecase }}
+      </span>
+    </div>
+
+    <div class="status-details">
+      <div class="status-detail-item">
+        <div class="status-detail-label">Industry</div>
+        <div>{{ startup.industry }}</div>
+      </div>
+      <div class="status-detail-item">
+        <div class="status-detail-label">Founder</div>
+        <div>{{ startup.founder }}</div>
+      </div>
+      <div class="status-detail-item">
+        <div class="status-detail-label">Founded Date</div>
+        <div>{{ startup.foundedDate | date }}</div>
+      </div>
+      <div class="status-detail-item">
+        <div class="status-detail-label">Employees</div>
+        <div>{{ startup.employees }}</div>
+      </div>
+    </div>
+
+    <div *ngIf="startup.website" class="status-detail-item">
+      <div class="status-detail-label">Website</div>
+      <a [href]="startup.website" target="_blank">{{ startup.website }}</a>
+    </div>
+
+    <div *ngIf="startup.status === 'rejected'" class="rejection-reason">
+      <h4>Rejection Reason</h4>
+      <p *ngIf="startup.rejectionReason">{{ startup.rejectionReason }}</p>
+    </div>
+  </div>
+</div>

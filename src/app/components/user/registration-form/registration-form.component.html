@@ -1,0 +1,102 @@
+<div class="registration-form">
+  <div class="form-header">
+    <h3>Register Your Startup</h3>
+    <p>Fill out the form below to register your startup</p>
+  </div>
+
+  <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+    <div *ngIf="successMessage" class="alert alert-success">
+      {{ successMessage }}
+    </div>
+    <div *ngIf="errorMessage" class="alert alert-danger">
+      {{ errorMessage }}
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="name">Startup Name</label>
+        <input 
+          type="text" 
+          id="name" 
+          class="form-control" 
+          formControlName="name" 
+          placeholder="Enter startup name"
+        >
+      </div>
+
+      <div class="form-group">
+        <label for="founder">Founder Name</label>
+        <input 
+          type="text" 
+          id="founder" 
+          class="form-control" 
+          formControlName="founder" 
+          placeholder="Enter founder name"
+        >
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="industry">Industry</label>
+        <input 
+          type="text" 
+          id="industry" 
+          class="form-control" 
+          formControlName="industry" 
+          placeholder="Enter industry"
+        >
+      </div>
+
+      <div class="form-group">
+        <label for="foundedDate">Founded Date</label>
+        <input 
+          type="date" 
+          id="foundedDate" 
+          class="form-control" 
+          formControlName="foundedDate"
+        >
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="employees">Number of Employees</label>
+        <input 
+          type="number" 
+          id="employees" 
+          class="form-control" 
+          formControlName="employees" 
+          placeholder="Enter number of employees"
+          min="1"
+        >
+      </div>
+
+      <div class="form-group">
+        <label for="website">Website (Optional)</label>
+        <input 
+          type="url" 
+          id="website" 
+          class="form-control" 
+          formControlName="website" 
+          placeholder="Enter website URL"
+        >
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea 
+        id="description" 
+        class="form-control" 
+        formControlName="description" 
+        rows="4"
+        placeholder="Describe your startup"
+      ></textarea>
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" class="btn-submit">Submit Application</button>
+    </div>
+  </form>
+</div>

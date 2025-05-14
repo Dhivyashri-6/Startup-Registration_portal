@@ -1,0 +1,68 @@
+.rejected-startups {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.rejected-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.rejected-card {
+  background: white;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  border-left: 4px solid var(--danger-color);
+  transition: all 0.3s ease;
+}
+
+.rejected-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.rejected-name {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--dark-color);
+}
+
+.rejected-industry {
+  display: inline-block;
+  padding: 0.2rem 0.8rem;
+  background-color: rgba(52, 152, 219, 0.2);
+  color: var(--info-color);
+  border-radius: 50px;
+  font-size: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.rejected-details {
+  margin-bottom: 1rem;
+}
+
+.rejected-detail {
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.rejected-detail-label {
+  font-weight: 500;
+  color: #666;
+}
+
+.rejection-reason {
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: rgba(231, 76, 60, 0.1);
+  border-radius: 5px;
+}
+
+.rejection-reason h4 {
+  color: var(--danger-color);
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}

@@ -1,0 +1,51 @@
+<div class="pending-startups">
+  <h3>Pending Startup Applications</h3>
+  <p>Review and approve or reject new startup applications</p>
+
+  <div *ngIf="isLoading" class="loading-message">
+    Loading pending applications...
+  </div>
+
+  <div *ngIf="!isLoading && startups.length === 0" class="empty-message">
+    No pending applications at this time.
+  </div>
+
+  <div class="startup-list">
+    <div *ngFor="let startup of startups" class="startup-card fade-in">
+      <h4 class="startup-name">{{ startup.name }}</h4>
+      <span class="startup-industry">{{ startup.industry }}</span>
+
+      <div class="startup-details">
+        <div class="startup-detail">
+          <span class="startup-detail-label">Founder:</span> {{ startup.founder }}
+        </div>
+        <div class="startup-detail">
+          <span class="startup-detail-label">Founded:</span> {{ startup.foundedDate | date }}
+        </div>
+        <div class="startup-detail">
+          <span class="startup-detail-label">Employees:</span> {{ startup.employees }}
+        </div>
+        <div class="startup-detail">
+          <span class="startup-detail-label">Description:</span> {{ startup.description }}
+        </div>
+        <div *ngIf="startup.website" class="startup-detail">
+          <span class="startup-detail-label">Website:</span> 
+          <a [href]="startup.website" target="_blank">{{ startup.website }}</a>
+        </div>
+      </div>
+
+      <div class="startup-actions">
+        <button class="btn btn-primary" (click)="approveStartup(startup.id!)">Approve</button>
+        <button class="btn btn-danger" (click)="showRejectionForm(startup.id!)">Reject</button>
+      </div>
+
+      <div *ngIf="showRejectionFor === startup.id" class="rejection-form">
+        <textarea [(ngModel)]="rejectionReason" placeholder="Enter rejection reason"></textarea>
+        <div class="rejection-actions">
+          <button class="btn btn-secondary" (click)="cancelRejection()">Cancel</button>
+          <button class="btn btn-danger" (click)="rejectStartup(startup.id)">Submit Rejection</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

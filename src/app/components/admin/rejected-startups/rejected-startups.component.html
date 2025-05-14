@@ -1,0 +1,43 @@
+<div class="rejected-startups">
+  <h3>Rejected Startup Applications</h3>
+  <p>View previously rejected startup applications</p>
+
+  <div *ngIf="isLoading" class="loading-message">
+    Loading rejected applications...
+  </div>
+
+  <div *ngIf="!isLoading && startups.length === 0" class="empty-message">
+    No rejected applications in the records.
+  </div>
+
+  <div class="rejected-list">
+    <div *ngFor="let startup of startups" class="rejected-card fade-in">
+      <h4 class="rejected-name">{{ startup.name }}</h4>
+      <span class="rejected-industry">{{ startup.industry }}</span>
+
+      <div class="rejected-details">
+        <div class="rejected-detail">
+          <span class="rejected-detail-label">Founder:</span> {{ startup.founder }}
+        </div>
+        <div class="rejected-detail">
+          <span class="rejected-detail-label">Founded:</span> {{ startup.foundedDate | date }}
+        </div>
+        <div class="rejected-detail">
+          <span class="rejected-detail-label">Employees:</span> {{ startup.employees }}
+        </div>
+        <div class="rejected-detail">
+          <span class="rejected-detail-label">Description:</span> {{ startup.description }}
+        </div>
+        <div *ngIf="startup.website" class="rejected-detail">
+          <span class="rejected-detail-label">Website:</span> 
+          <a [href]="startup.website" target="_blank">{{ startup.website }}</a>
+        </div>
+      </div>
+
+      <div class="rejection-reason">
+        <h4>Rejection Reason</h4>
+        <p>{{ startup.rejectionReason }}</p>
+      </div>
+    </div>
+  </div>
+</div>
